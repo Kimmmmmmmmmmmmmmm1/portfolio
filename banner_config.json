@@ -1,7 +1,16 @@
 {
-  "files": [
-    "Banner1.png",
-    "Banner2.png",
-    "Banner3.png"
+  "banners": [
+    {
+      "file": "Banner1.png",
+      "command": "https://www.google.com"
+    },
+    {
+      "file": "Banner2.png",
+      "command": "OpenShop"
+    },
+    {
+      "file": "Banner3.png",
+      "command": "StartGame"
+    }
   ]
 }
