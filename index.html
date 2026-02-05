@@ -52,7 +52,7 @@
 
         /* ===== 헤더 섹션 ===== */
         header {
-            padding: 120px 0 140px;
+            padding: 160px 0 160px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -101,7 +101,7 @@
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 15px;
             background: linear-gradient(135deg, #f1f5f9 0%, var(--primary-color) 100%);
@@ -112,7 +112,168 @@
             letter-spacing: -2px;
         }
 
+        .header-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 24px;
+            margin-bottom: 40px;
+        }
+
+        .profile-image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .profile-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        .profile-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-info {
+            text-align: center;
+        }
+
+        .profile-tagline {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-top: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-skills {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .skill-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 2rem;
+        }
+
+        .skill-icon-item {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 64, 175, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px;
+        }
+
+        .skill-icon-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .skill-icon-item:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(30, 64, 175, 0.15) 100%);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .skill-icon-item::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .skill-icon-item:hover::after {
+            opacity: 1;
+        }
+
+        .profile-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .profile-keywords span {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .profile-keywords span:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .profile-contact {
+            margin-top: 8px;
+            margin-bottom: 30px;
+        }
+
+        .profile-contact a {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .profile-contact a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
         .subtitle {
+            display: none;
             font-size: 1.5rem;
             color: var(--secondary-color);
             margin-bottom: 25px;
@@ -121,6 +282,7 @@
         }
 
         .tagline {
+            display: none;
             font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 750px;
@@ -315,6 +477,15 @@
             letter-spacing: 0.5px;
         }
 
+        .dev-team-size {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
         /* ===== 컨텐츠 그리드 ===== */
         .content-grid {
             display: flex;
@@ -414,6 +585,70 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             border: 1px solid var(--primary-color);
+        }
+
+        /* ===== Contact 섹션 ===== */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 64, 175, 0.1) 100%);
+            padding: 20px 35px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(30, 64, 175, 0.15) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .contact-label {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-label img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         /* ===== 푸터 ===== */
@@ -683,8 +918,33 @@
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 letter-spacing: -1px;
+            }
+
+            .profile-placeholder {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .profile-tagline {
+                font-size: 1.2rem;
+            }
+
+            .skill-icons {
+                gap: 10px;
+                font-size: 1.5rem;
+            }
+
+            .skill-icon-item {
+                width: 45px;
+                height: 45px;
+            }
+
+            .profile-keywords span {
+                font-size: 0.85rem;
+                padding: 6px 14px;
             }
 
             .subtitle {
@@ -698,7 +958,7 @@
             }
 
             header {
-                padding: 80px 0 100px;
+                padding: 60px 0 80px;
             }
 
             .section-title {
@@ -769,6 +1029,27 @@
                 margin-top: 20px;
             }
 
+            .contact-section {
+                padding: 60px 0;
+            }
+
+            .contact-title {
+                font-size: 1.7rem;
+            }
+
+            .contact-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .contact-links {
+                gap: 20px;
+            }
+
+            .contact-card {
+                padding: 15px 25px;
+            }
+
             footer {
                 padding: 60px 0 30px;
             }
@@ -776,7 +1057,41 @@
 
         @media (max-width: 480px) {
             h1 {
+                font-size: 1.8rem;
+            }
+
+            .profile-placeholder {
+                width: 90px;
+                height: 90px;
                 font-size: 2rem;
+            }
+
+            .profile-tagline {
+                font-size: 1rem;
+            }
+
+            .skill-icons {
+                gap: 8px;
+                font-size: 1.3rem;
+            }
+
+            .skill-icon-item {
+                width: 40px;
+                height: 40px;
+            }
+
+            .profile-keywords {
+                gap: 8px;
+            }
+
+            .profile-keywords span {
+                font-size: 0.8rem;
+                padding: 5px 12px;
+            }
+
+            .profile-contact a {
+                font-size: 0.9rem;
+                padding: 10px 24px;
             }
 
             .subtitle {
@@ -820,6 +1135,33 @@
                 height: 220px;
                 font-size: 0.9rem;
             }
+
+            .contact-section {
+                padding: 50px 0;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .contact-card {
+                padding: 12px 20px;
+            }
+
+            .contact-label,
+            .contact-value {
+                font-size: 0.85rem;
+            }
         }
 
         .visual-content {
@@ -856,7 +1198,7 @@
         }
 
         .project-image-item .image-placeholder {
-            height: 250px;
+            height: auto;
             margin: 0 auto;
             max-width: 600px;
         }
@@ -1047,6 +1389,8 @@
             object-fit: contain;
             border-radius: 10px;
             transition: transform 0.2s ease;
+            cursor: grab;
+            user-select: none;
         }
 
         .modal-close {
@@ -1161,19 +1505,56 @@
                 <a href="#skills">Core Competencies</a>
                 <a href="#scape">SCAPE: AI 추리 게임</a>
                 <a href="#debog">De-Bug: 2D 액션</a>
-                <a href="#rummy">한글 루미큐브</a>
+                <a href="#rummy">한글 조합 게임</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
     <header class="container scroll-fade">
-        <h1 style="animation: slideInDown 1s ease-out;">김동현 (Kim Dong-hyeon)</h1>
-        <div class="subtitle" style="animation: fadeIn 1s ease-out 0.2s both;">Level Designer | Logical Thinking &
-            System Design</div>
-        <p class="tagline" style="animation: fadeIn 1s ease-out 0.4s both;">
-            "코드 흐름을 읽는 기획자, 개발팀의 언어로 실현 가능한 재미를 빈틈없이 설계합니다."<br>
-            데이터 기반의 사고와 Unity 활용 능력을 바탕으로 최적의 퍼즐 경험을 제공하겠습니다.
-        </p>
+        <div class="header-profile">
+            <div class="profile-image-wrapper">
+                <div class="profile-placeholder"><img src="assets/김동현.jpg" alt="김동현 프로필 사진"></div>
+            </div>
+            <div class="profile-info">
+                <h1 style="animation: slideInDown 1s ease-out;">김동현</h1>
+                <p class="profile-tagline" style="animation: fadeIn 1s ease-out 0.2s both;">"코드 흐름을 읽는 게임 디자이너."</p>
+            </div>
+        </div>
+
+        <div class="profile-skills" style="animation: fadeIn 1s ease-out 0.3s both;">
+            <div class="skill-icons">
+                <div class="skill-icon-item" data-tooltip="GitHub">
+                    <img src="assets/icons/github.png" alt="GitHub">
+                </div>
+                <div class="skill-icon-item" data-tooltip="Figma">
+                    <img src="assets/icons/figma.png" alt="Figma">
+                </div>
+                <div class="skill-icon-item" data-tooltip="Illustration">
+                    <img src="assets/icons/illustration.png" alt="Illustration">
+                </div>
+                <div class="skill-icon-item" data-tooltip="Photoshop">
+                    <img src="assets/icons/photoshop.png" alt="Photoshop">
+                </div>
+                <div class="skill-icon-item" data-tooltip="Unity">
+                    <img src="assets/icons/unity.png" alt="Unity">
+                </div>
+                <div class="skill-icon-item" data-tooltip="Godot Engine">
+                    <img src="assets/icons/godotengine.png" alt="Godot Engine">
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-keywords" style="animation: fadeIn 1s ease-out 0.4s both;">
+            <span>#Unity활용</span>
+            <span>#게임 디자이너</span>
+            <span>#논리적사고</span>
+            <span>#소통</span>
+        </div>
+
+        <div class="profile-contact" style="animation: fadeIn 1s ease-out 0.5s both;">
+            <a href="mailto:k31321@ajou.ac.kr">📧 k31321@ajou.ac.kr</a>
+        </div>
     </header>
 
     <section class="container scroll-fade" id="skills" style="animation-delay: 0.2s;">
@@ -1202,15 +1583,15 @@
                     <p>생성형 AI의 불확실성을 '게임 규칙'으로 통제한 시스템 기획</p>
                 </div>
                 <div class="project-tags">Unity | Perplexity API | System Design</div>
+                <div class="dev-team-size">👥 개발 인원: 4인</div>
             </div>
 
             <div class="project-media-section">
                 <div class="media-pair scroll-fade">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Main Gameplay</span>
-                            [플레이 장면 이미지]<br>
-                            (용의자와 대화 장면)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/scape/gameplay.gif" alt="SCAPE: AI 추리 게임 - 플레이 장면"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 실시간 자백도 변화 시스템</div>
                     </div>
@@ -1223,10 +1604,9 @@
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Evidence System</span>
-                            [증거 시스템 이미지]<br>
-                            (증거물 인터페이스)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/scape/evidence.png" alt="SCAPE: AI 추리 게임 - 증거 시스템"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 증거 수집 및 제시 메커니즘</div>
                     </div>
@@ -1239,10 +1619,9 @@
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Ending Branch</span>
-                            [분기 구조도 이미지]<br>
-                            (엔딩 플로우차트)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/scape/ending.png" alt="SCAPE: AI 추리 게임 - 다중 엔딩 시스템"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 다중 엔딩 분기 시스템</div>
                     </div>
@@ -1277,16 +1656,16 @@
                     <div class="project-title">De-Bug: 2D 액션 플랫폼</div>
                     <p>확장성을 고려한 스킬 시스템 및 보스 패턴 난이도 설계</p>
                 </div>
-                <div class="project-tags">Godot/Unity | Level Design | Modularity</div>
+                <div class="project-tags">Godot | Level Design | Modularity</div>
+                <div class="dev-team-size">👥 개발 인원: 3인</div>
             </div>
 
             <div class="project-media-section">
                 <div class="media-pair scroll-fade">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Boss Battle</span>
-                            [보스 전투 장면 이미지]<br>
-                            (화려한 탄막 피하기)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/debug/boss.gif" alt="De-Bug: 2D 액션 - 보스 전투"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 보스 페이즈별 난이도 패턴 설계</div>
                     </div>
@@ -1299,10 +1678,9 @@
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Skill System</span>
-                            [스킬 시스템 이미지]<br>
-                            (3가지 스킬 슬롯)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/debug/skills.png" alt="De-Bug: 2D 액션 - 스킬 시스템"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 확장성을 고려한 스킬 구조</div>
                     </div>
@@ -1315,10 +1693,9 @@
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Class Hierarchy</span>
-                            [BaseSkill 구조도 이미지]<br>
-                            (상속 구조 다이어그램)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/debug/class-structure.png" alt="De-Bug: 2D 액션 - BaseSkill 구조"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 모듈화된 클래스 설계</div>
                     </div>
@@ -1350,60 +1727,60 @@
         <div class="project-container glow-hover scroll-rotate" style="border: 2px solid var(--primary-color);">
             <div class="project-header">
                 <div>
-                    <div class="project-title" style="color: var(--primary-color);">★ 한글 루미큐브 (Project K-Rummy)</div>
-                    <p>퍼즐 로직의 정교함과 모바일 UX 최적화</p>
+                    <div class="project-title" style="color: var(--primary-color);">★ 한글 조합 게임 (Project Korean Word)
+                    </div>
+                    <p>한글 조합 법칙과 퍼즐 로직의 조화</p>
                 </div>
-                <div class="project-tags">Puzzle Logic | UX Design | Algorithm</div>
+                <div class="project-tags">Unity | Puzzle Logic | UI/UX Design | Algorithm</div>
+                <div class="dev-team-size">👥 개발 인원: 1인</div>
             </div>
 
             <div class="project-media-section">
                 <div class="media-pair scroll-fade">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Game Board</span>
-                            [게임 보드 스크린샷 이미지]<br>
-                            (한글 타일 배치)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/korean/board.png" alt="한글 조합 게임 - 게임 보드"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
-                        <div class="image-caption">▲ 한글 루미큐브 게임 플레이 화면</div>
+                        <div class="image-caption">▲ 한글 조합 게임 플레이 화면</div>
                     </div>
                     <div class="detail-card scroll-scale">
                         <h4>💡 기획 의도</h4>
-                        <p>루미큐브 규칙에 한글 자모음 결합 원리를 접목. 한글의 과학적 제자 원리(<strong>초성+중성+종성</strong>)를 게임 룰로 치환하여, 단어 조합을 통해
+                        <p>한글 자모음 결합 원리를 게임 설계에 적용. 한글의 과학적 제자 원리(<strong>초성+중성+종성</strong>)를 게임 룰로 치환하여, 단어 조합을 통해
                             한글의 우수성을 체험하고 퍼즐 해결의 카타르시스를 느끼도록 기획. 단순 단어 맞추기를 넘어 전략적 타일 관리가 필요한 두뇌 게임 지향.</p>
                     </div>
                 </div>
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Validation Algorithm</span>
-                            [검증 알고리즘 플로우차트 이미지]<br>
-                            (타일 유효성 검사)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/korean/validation.png" alt="한글 조합 게임 - 검증 알고리즘"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
                         <div class="image-caption">▲ 타일 검증 로직 설계</div>
                     </div>
                     <div class="detail-card scroll-scale" style="animation-delay: 0.1s;">
-                        <h4>🎯 담당 부분</h4>
-                        <p>한글 결합 규칙을 활용한 핵심 퍼즐 아이디어 제안 및 모바일 환경 최적화 UI/UX 구체화. 좁은 화면에서의 조작 편의를 위한 <strong>'자동 정렬' 및
-                                '드래그' 인터페이스</strong> 설계. 승리 조건과 예외 상황(잘못된 결합 등)을 정의한 상세 룰북(Rule Book) 작성.</p>
+                        <h4>🎯 1인 개발</h4>
+                        <p>한글 결합 규칙을 활용한 핵심 퍼즐 아이디어 제안 및 알고리즘 구체화. 모바일 환경 최적화 UI/UX. 좁은 화면에서의 조작 편의를 위한 <strong>'자동 정렬'
+                                및
+                                '드래그' 인터페이스</strong> 설계. 승리 조건과 예외 상황(잘못된 결합 등)을 정의한 상세 룰(Rule) 기획.</p>
                     </div>
                 </div>
 
                 <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
                     <div class="project-image-item scroll-scale">
-                        <div class="image-placeholder" onclick="openModal(this)">
-                            <span class="img-tag">Mobile UX</span>
-                            [모바일 UI/UX 와이어프레임 이미지]<br>
-                            (드래그, 드롭, 정렬)
+                        <div class="image-placeholder" onclick="openModal(this.querySelector('img'))">
+                            <img src="assets/korean/combination-check.png" alt="한글 조합 게임 - 한글 조합 작동 여부"
+                                style="width: 100%; height: auto; object-fit: contain;">
                         </div>
-                        <div class="image-caption">▲ 모바일 최적화 인터페이스 설계</div>
+                        <div class="image-caption">▲ 한글 조합 작동 여부 검증 결과</div>
                     </div>
                     <div class="detail-card scroll-scale" style="animation-delay: 0.2s;">
                         <h4>⚙️ 구현 알고리즘</h4>
                         <ul>
                             <li><strong>Unicode 오토마타:</strong> Unicode 체계 기반의 한글 오토마타 로직 알고리즘화</li>
                             <li><strong>검증 시스템:</strong> 플레이어 제출 타일의 문법적 유효성 검사</li>
-                            <li><strong>규칙 부합도:</strong> 루미큐브 규칙(연속성, 그룹) 부합 여부 실시간 검사</li>
+                            <li><strong>규칙 부합도:</strong> 한글 조합 규칙(연쇄 배치, 그룹화) 부합 여부 실시간 검사</li>
                             <li><strong>판정 플로우:</strong> 타일 제출 → 유효성 검사 → 등록/반려의 상세 알고리즘</li>
                         </ul>
                     </div>
@@ -1415,16 +1792,34 @@
                         <li><strong>예외 처리:</strong> 초/중/종성 결합 시 발생하는 모든 예외 케이스 분류</li>
                         <li><strong>알고리즘 완결성:</strong> 시스템이 오류 없이 모든 경우 처리</li>
                         <li><strong>사용자 피드백:</strong> "유효한 조합", "잘못된 타일" 등 명확한 피드백 제공</li>
-                        <li><strong>모바일 최적화:</strong> 마그네틱 드래그 및 그룹핑 기능으로 터치 미스 최소화</li>
+                        <li><strong>손맛 구현:</strong> 마그네틱 드래그 및 그룹핑 기능으로 터치 미스 최소화</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="container contact-section scroll-fade" id="contact">
+        <h2 class="contact-title">퍼즐원스튜디오 Level Designer 지원</h2>
+        <p class="contact-subtitle">
+            <strong>RISE 2026-1학기 현장실습</strong>을 통해 데이터 기반의 레벨 디자인 실무를 경험하고자 합니다.<br>
+            Unity 엔진 활용 능력과 논리적 사고를 바탕으로, 글로벌 퍼즐 게임 유저에게<br>
+            최적화된 재미와 몰입감을 설계하는 Level Designer로 성장하겠습니다.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:k31321@ajou.ac.kr" class="contact-card">
+                <span class="contact-label">📧</span>
+                <span class="contact-value">k31321@ajou.ac.kr</span>
+            </a>
+            <a href="https://github.com/Kimmmmmmmmmmmmmmm1" target="_blank" class="contact-card">
+                <span class="contact-label"><img src="assets/icons/github.png" alt="GitHub"></span>
+                <span class="contact-value">GitHub</span>
+            </a>
+        </div>
+    </section>
+
     <footer class="container">
         <p>Copyright © 2026 Kim Dong-hyeon. All rights reserved.</p>
-        <p>본 포트폴리오는 RISE 현장실습 지원을 위해 제작되었습니다.</p>
     </footer>
 
     <script>
@@ -1574,9 +1969,15 @@
         const MAX_ZOOM = 300;
         const ZOOM_STEP = 10;
 
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let translateX = 0;
+        let translateY = 0;
+
         function updateZoomDisplay() {
             zoomLevelDisplay.textContent = currentZoom + '%';
-            modalImage.style.transform = `scale(${currentZoom / 100})`;
+            modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom / 100})`;
         }
 
         function zoomImage(direction) {
@@ -1586,6 +1987,8 @@
                 currentZoom = Math.max(currentZoom - ZOOM_STEP, MIN_ZOOM);
             } else if (direction === 'reset') {
                 currentZoom = 100;
+                translateX = 0;
+                translateY = 0;
             }
             updateZoomDisplay();
         }
@@ -1604,24 +2007,53 @@
             }
         }, { passive: false });
 
+        // 마우스 드래그로 이미지 이동
+        modalImage.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStartX = e.clientX - translateX;
+            dragStartY = e.clientY - translateY;
+            modalImage.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - dragStartX;
+            translateY = e.clientY - dragStartY;
+            updateZoomDisplay();
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                modalImage.style.cursor = 'grab';
+            }
+        });
+
         function openModal(element) {
-            // 클릭한 요소의 텍스트에서 대괄호 안의 텍스트를 이미지 경로로 사용
-            const text = element.textContent;
-            const match = text.match(/\[(.*?)\]/);
+            // img 태그인 경우 src 사용, placeholder인 경우 data-src 속성 사용
+            let imagePath = '';
 
-            if (match) {
-                const imagePath = match[1];
-                // 실제 이미지가 없을 때의 placeholder로 사용
-                // 나중에 실제 이미지 경로를 입력하면 이 부분에서 로드됨
-                modalImage.alt = imagePath;
-                modalImage.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%)';
-                modalImage.style.display = 'flex';
-                modalImage.style.alignItems = 'center';
-                modalImage.style.justifyContent = 'center';
-                modalImage.textContent = imagePath; // 이미지 로드 실패 시 텍스트 표시
+            if (element.tagName === 'IMG') {
+                imagePath = element.src;
+                modalImage.alt = element.alt;
+            } else {
+                // 기존 placeholder 방식 지원
+                imagePath = element.getAttribute('data-image') || '';
+                modalImage.alt = element.getAttribute('data-alt') || '';
+            }
 
-                // 줌 초기화
+            if (imagePath) {
+                modalImage.src = imagePath;
+                modalImage.style.background = '';
+                modalImage.style.display = 'block';
+                modalImage.textContent = '';
+
+                // 줌 및 드래그 초기화
                 currentZoom = 100;
+                translateX = 0;
+                translateY = 0;
+                modalImage.style.cursor = 'grab';
                 updateZoomDisplay();
 
                 modal.classList.add('active');
@@ -1635,6 +2067,9 @@
             modalImage.src = '';
             modalImage.textContent = '';
             currentZoom = 100;
+            translateX = 0;
+            translateY = 0;
+            isDragging = false;
             updateZoomDisplay();
         }
 
