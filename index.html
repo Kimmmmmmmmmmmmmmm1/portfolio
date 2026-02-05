@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김동현 - Level Designer Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #1e40af;
+            --bg-color: #0f172a;
+            --bg-card: #1e293b;
+            --bg-subtle: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #475569;
+            --section-spacing: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, #1a2a44 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-top: 70px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== 헤더 섹션 ===== */
+        header {
+            padding: 120px 0 140px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 64, 175, 0.05) 100%);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        header>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #f1f5f9 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ===== 섹션 스타일 ===== */
+        section {
+            margin-bottom: var(--section-spacing);
+            position: relative;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        section:nth-child(odd) {
+            background: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.03) 100%);
+            padding: 100px 0;
+        }
+
+        section.container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        /* ===== 스킬 카드 ===== */
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 0 auto 40px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1a3a52 50%, var(--bg-card) 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            flex: 1 1 300px;
+            max-width: 350px;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 0 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        /* ===== 프로젝트 컨테이너 ===== */
+        .project-container {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1a3a52 50%, var(--bg-card) 100%);
+            padding: 50px;
+            border-radius: 15px;
+            margin: 0 auto 60px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .project-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .project-container:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15), 0 0 40px rgba(59, 130, 246, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .project-container:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 25px;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .project-header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .project-tags {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 컨텐츠 그리드 ===== */
+        .content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .text-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            margin-top: 25px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .text-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .text-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .text-content ul {
+            padding-left: 0;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            text-align: left;
+            display: inline-block;
+            max-width: 100%;
+            list-style-position: inside;
+        }
+
+        .text-content li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        /* ===== 이미지 플레이스홀더 ===== */
+        .image-placeholder {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f172a 100%);
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .image-placeholder:hover {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #1e3a4c 0%, #1a2a44 100%);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .img-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--primary-color);
+        }
+
+        /* ===== 푸터 ===== */
+        footer {
+            text-align: center;
+            padding: 80px 0 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        footer p:first-child {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* ===== 스크롤 효과 애니메이션 ===== */
+
+        /* 페이드인 애니메이션 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 좌측에서 슬라이드인 */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 우측에서 슬라이드인 */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 위에서 슬라이드인 */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 아래에서 슬라이드인 */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 확대 효과 */
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* 회전 효과 */
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: rotate(0) scale(1);
+            }
+        }
+
+        /* 스크롤 애니메이션 트리거 클래스 */
+        .scroll-fade {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .scroll-slide-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .scroll-slide-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .scroll-slide-up {
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .scroll-slide-down {
+            opacity: 0;
+            animation: slideInDown 0.8s ease-out forwards;
+        }
+
+        .scroll-scale {
+            opacity: 0;
+            animation: scaleUp 0.8s ease-out forwards;
+        }
+
+        .scroll-rotate {
+            opacity: 0;
+            animation: rotateIn 0.8s ease-out forwards;
+        }
+
+        /* 개별 애니메이션 지연 (연쇄 효과) */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* 호버 효과 - 글로우 */
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* ===== 네비게이션 바 ===== */
+        nav.toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.95) 100%);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideInDown 0.6s ease-out forwards;
+        }
+
+        .toc-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .toc-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+            display: inline-block;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .toc-items {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .toc-items a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .toc-items a::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .toc-items a:hover {
+            color: var(--primary-color);
+        }
+
+        .toc-items a:hover::before {
+            width: 100%;
+        }
+
+        .toc-items a.active {
+            color: var(--primary-color);
+            background: rgba(59, 130, 246, 0.15);
+            font-weight: 600;
+        }
+
+        .toc-items a.active::before {
+            width: 100%;
+        }
+
+        /* ===== 반응형 디자인 ===== */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            header {
+                padding: 80px 0 100px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 35px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .skill-card {
+                padding: 25px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .project-container {
+                padding: 30px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                padding-bottom: 20px;
+                margin-bottom: 25px;
+            }
+
+            .project-tags {
+                text-align: center;
+            }
+
+            .toc-container {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .toc-items {
+                gap: 20px;
+                width: 100%;
+                order: 3;
+            }
+
+            nav.toc {
+                padding: 12px 0;
+            }
+
+            .toc-title {
+                font-size: 0.75rem;
+            }
+
+            .toc-items a {
+                font-size: 0.85rem;
+                padding: 4px 8px;
+            }
+
+            section:nth-child(odd) {
+                padding: 60px 0;
+                margin-left: -20px;
+                margin-right: -20px;
+            }
+
+            .text-content h3 {
+                font-size: 1.1rem;
+                margin-top: 20px;
+            }
+
+            footer {
+                padding: 60px 0 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .skill-card {
+                padding: 20px;
+            }
+
+            .project-container {
+                padding: 20px;
+            }
+
+            .toc-container {
+                gap: 15px;
+            }
+
+            .toc-items {
+                gap: 15px;
+            }
+
+            .toc-items a {
+                font-size: 0.8rem;
+                padding: 3px 6px;
+            }
+
+            .image-placeholder {
+                height: 220px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .visual-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ===== 프로젝트 미디어-콘텐츠 섹션 ===== */
+        .project-media-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .media-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .project-image-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .project-image-item .image-placeholder {
+            height: 250px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .project-image-item .image-caption {
+            text-align: center;
+            margin: 0;
+        }
+
+        /* deprecated: project-images 호환성 유지 */
+        .project-images {
+            display: none;
+        }
+
+        /* ===== 프로젝트 상세 정보 카드 ===== */
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .detail-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .detail-card:hover {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .detail-card:hover::before {
+            opacity: 1;
+        }
+
+        .detail-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .detail-card ul {
+            margin: 10px 0;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .detail-card li {
+            margin-bottom: 6px;
+        }
+
+        .detail-card li strong {
+            color: var(--secondary-color);
+        }
+
+        /* ===== 이미지 모달 ===== */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            animation: fadeIn 0.3s ease-out;
+            backdrop-filter: blur(5px);
+        }
+
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-zoom-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px 15px;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .zoom-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .zoom-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .zoom-btn:active {
+            transform: scale(0.95);
+        }
+
+        .zoom-btn.reset {
+            font-size: 12px;
+            width: auto;
+            padding: 0 12px;
+        }
+
+        .zoom-level {
+            color: var(--text-primary);
+            font-weight: 600;
+            min-width: 50px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .modal-image-container {
+            overflow: auto;
+            max-width: 90vw;
+            max-height: calc(90vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--primary-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .image-placeholder {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-color);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-images {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-close {
+                top: 10px;
+                right: 10px;
+            }
+
+            .modal-content {
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+
+            .modal-zoom-controls {
+                font-size: 12px;
+                gap: 8px;
+                padding: 8px 10px;
+            }
+
+            .zoom-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+
+            .zoom-level {
+                font-size: 12px;
+            }
+
+            .modal-image-container {
+                max-width: 95vw;
+                max-height: calc(85vh - 70px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 이미지 모달 -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-zoom-controls">
+                <button class="zoom-btn" id="zoomOut" title="축소">−</button>
+                <span class="zoom-level" id="zoomLevel">100%</span>
+                <button class="zoom-btn" id="zoomIn" title="확대">+</button>
+                <button class="zoom-btn reset" id="zoomReset" title="원래 크기">리셋</button>
+            </div>
+            <div class="modal-image-container">
+                <img class="modal-image" id="modalImage" src="" alt="확대 이미지">
+            </div>
+        </div>
+    </div>
+
+    <!-- 목차 네비게이션 -->
+    <nav class="toc">
+        <div class="toc-container">
+            <span class="toc-title"></span>
+            <div class="toc-items">
+                <a href="#skills">Core Competencies</a>
+                <a href="#scape">SCAPE: AI 추리 게임</a>
+                <a href="#debog">De-Bug: 2D 액션</a>
+                <a href="#rummy">한글 루미큐브</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container scroll-fade">
+        <h1 style="animation: slideInDown 1s ease-out;">김동현 (Kim Dong-hyeon)</h1>
+        <div class="subtitle" style="animation: fadeIn 1s ease-out 0.2s both;">Level Designer | Logical Thinking &
+            System Design</div>
+        <p class="tagline" style="animation: fadeIn 1s ease-out 0.4s both;">
+            "코드 흐름을 읽는 기획자, 개발팀의 언어로 실현 가능한 재미를 빈틈없이 설계합니다."<br>
+            데이터 기반의 사고와 Unity 활용 능력을 바탕으로 최적의 퍼즐 경험을 제공하겠습니다.
+        </p>
+    </header>
+
+    <section class="container scroll-fade" id="skills" style="animation-delay: 0.2s;">
+        <h2 class="section-title scroll-slide-left">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card glow-hover scroll-scale stagger-1" style="animation-delay: 0.3s;">
+                <div class="skill-title">🧩 Logic & Rules</div>
+                <p>복잡한 게임 규칙을 논리적인 알고리즘으로 구조화하고, 데이터 기반의 난이도 곡선(Difficulty Curve)을 설계합니다.</p>
+            </div>
+            <div class="skill-card glow-hover scroll-scale stagger-2" style="animation-delay: 0.4s;">
+                <div class="skill-title">🎮 Engine Ready</div>
+                <p>Unity 및 Godot 엔진을 활용하여 리소스를 직접 적용하고, C# 스크립팅을 통해 프로토타입을 빠르게 구현합니다.</p>
+            </div>
+            <div class="skill-card glow-hover scroll-scale stagger-3" style="animation-delay: 0.5s;">
+                <div class="skill-title">🤖 AI Utilization</div>
+                <p>생성형 AI(ChatGPT)를 게임 시스템 내의 변수로 통제하고, 자백도와 같은 수치형 데이터를 통해 재미를 제어합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container scroll-fade" id="scape" style="animation-delay: 0.4s;">
+        <div class="project-container glow-hover scroll-slide-left">
+            <div class="project-header">
+                <div>
+                    <div class="project-title">SCAPE: AI 추리 게임</div>
+                    <p>생성형 AI의 불확실성을 '게임 규칙'으로 통제한 시스템 기획</p>
+                </div>
+                <div class="project-tags">Unity | Perplexity API | System Design</div>
+            </div>
+
+            <div class="project-media-section">
+                <div class="media-pair scroll-fade">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Main Gameplay</span>
+                            [플레이 장면 이미지]<br>
+                            (용의자와 대화 장면)
+                        </div>
+                        <div class="image-caption">▲ 실시간 자백도 변화 시스템</div>
+                    </div>
+                    <div class="detail-card scroll-scale">
+                        <h4>💡 기획 의도</h4>
+                        <p>단순 텍스트 어드벤처를 탈피, 생성형 AI와의 상호작용을 통해 실제 용의자와 심문하는 듯한 몰입감 구현. 증거 수집과 조합, 심문으로 이어지는 추리의 본질적 재미를
+                            추구하며, 예측 불가능한 AI 답변을 <strong>'자백도'</strong>라는 게임 규칙으로 제어하여 긴장감 있는 플레이 경험 제공.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Evidence System</span>
+                            [증거 시스템 이미지]<br>
+                            (증거물 인터페이스)
+                        </div>
+                        <div class="image-caption">▲ 증거 수집 및 제시 메커니즘</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.1s;">
+                        <h4>🎯 담당 부분</h4>
+                        <p>스마트폰 인터페이스를 포함한 전체 UI/UX 설계 및 '방탈출'식 현장 탐색과 'AI 심문'을 연결하는 핵심 게임 루프 기획. 플레이어의 선택(심문 대상, 제시
+                            증거)에 따라 결말이 달라지는 <strong>이중 엔딩(Multi-Ending)</strong> 구조를 설계하여 다회차 플레이 가치 부여.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Ending Branch</span>
+                            [분기 구조도 이미지]<br>
+                            (엔딩 플로우차트)
+                        </div>
+                        <div class="image-caption">▲ 다중 엔딩 분기 시스템</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.2s;">
+                        <h4>⚙️ 구현 알고리즘</h4>
+                        <ul>
+                            <li><strong>API 연동:</strong> Perplexity API와 Unity 연동으로 실시간 대화 시스템 구축</li>
+                            <li><strong>페르소나 관리:</strong> 용의자 페르소나와 알리바이를 JSON으로 정의</li>
+                            <li><strong>자백도 시스템:</strong> 증거 ID 입력 및 대화 맥락에 따라 '자백도' 변수 실시간 증감</li>
+                            <li><strong>분기 로직:</strong> 플레이어 선택에 따른 동적 엔딩 구조</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-card scroll-scale" style="animation-delay: 0.3s;">
+                    <h4>🔧 구현 디테일</h4>
+                    <ul>
+                        <li><strong>AI 환각 방지:</strong> 시스템 프롬프트 최적화를 통한 일관성 유지</li>
+                        <li><strong>방어 기제 로직:</strong> 무조건적 자백을 막는 균형 잡힌 난이도 설계</li>
+                        <li><strong>증거 가중치:</strong> 중요도에 따른 설득 성공 여부 밸런싱</li>
+                        <li><strong>논리 기반 풀이:</strong> 운이 아닌 논리로 게임을 풀어나가는 구조 확립</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container scroll-fade" id="debog" style="animation-delay: 0.6s;">
+        <div class="project-container glow-hover scroll-slide-right">
+            <div class="project-header">
+                <div>
+                    <div class="project-title">De-Bug: 2D 액션 플랫폼</div>
+                    <p>확장성을 고려한 스킬 시스템 및 보스 패턴 난이도 설계</p>
+                </div>
+                <div class="project-tags">Godot/Unity | Level Design | Modularity</div>
+            </div>
+
+            <div class="project-media-section">
+                <div class="media-pair scroll-fade">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Boss Battle</span>
+                            [보스 전투 장면 이미지]<br>
+                            (화려한 탄막 피하기)
+                        </div>
+                        <div class="image-caption">▲ 보스 페이즈별 난이도 패턴 설계</div>
+                    </div>
+                    <div class="detail-card scroll-scale">
+                        <h4>💡 기획 의도</h4>
+                        <p>로그라이크 요소를 결합하여 플레이어가 자신만의 스킬 조합을 찾는 <strong>'발견의 재미'</strong> 의도. 다양한 속성 스킬의 합성 및 강화를 통해 전략적
+                            전투 스타일을 구축하는 액션의 깊이 추구. '버그(Bug)를 잡는다'는 프로그래밍적 컨셉을 시각화하여 디버깅 과정을 효과적으로 게이미피케이션.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Skill System</span>
+                            [스킬 시스템 이미지]<br>
+                            (3가지 스킬 슬롯)
+                        </div>
+                        <div class="image-caption">▲ 확장성을 고려한 스킬 구조</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.1s;">
+                        <h4>🎯 담당 부분</h4>
+                        <p>메인 게임 루프 및 전투 시스템 전반 기획. 3가지 스킬 슬롯을 활용한 <strong>전략적 조합 시스템</strong>을 고안하여, 상황에 맞춰 공격(참격),
+                            원거리(화염구), 보조(힐) 스킬을 교체하는 전투 메커니즘 정립. 보스 몬스터의 공격 패턴 및 페이즈별 난이도 곡선 설계.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Class Hierarchy</span>
+                            [BaseSkill 구조도 이미지]<br>
+                            (상속 구조 다이어그램)
+                        </div>
+                        <div class="image-caption">▲ 모듈화된 클래스 설계</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.2s;">
+                        <h4>⚙️ 구현 알고리즘</h4>
+                        <ul>
+                            <li><strong>BaseSkill 설계:</strong> 추상 클래스 설계 및 상속을 통한 다형성 구현</li>
+                            <li><strong>모듈화 구조:</strong> 확장성 고려로 데이터 교체만으로 신규 스킬 추가 가능</li>
+                            <li><strong>FSM 패턴:</strong> 보스 몬스터 체력 구간별 패턴 변화를 FSM 로직으로 구현</li>
+                            <li><strong>판정 최적화:</strong> 투사체 생성 및 충돌 판정 최적화</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-card scroll-scale" style="animation-delay: 0.3s;">
+                    <h4>🔧 구현 디테일</h4>
+                    <ul>
+                        <li><strong>데이터 기반 설계:</strong> 하드코딩 지양, 개발 중 신규 아이디어 즉시 반영 가능</li>
+                        <li><strong>변수화:</strong> 보스 투사체의 속도, 생성 주기 등을 변수화</li>
+                        <li><strong>난이도 밸런싱:</strong> 반복 테스트를 통한 정교한 난이도 곡선 조정</li>
+                        <li><strong>페이즈 설계:</strong> 보스의 점진적 난이도 상승으로 긴장감 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container scroll-fade" id="rummy" style="animation-delay: 0.8s;">
+        <div class="project-container glow-hover scroll-rotate" style="border: 2px solid var(--primary-color);">
+            <div class="project-header">
+                <div>
+                    <div class="project-title" style="color: var(--primary-color);">★ 한글 루미큐브 (Project K-Rummy)</div>
+                    <p>퍼즐 로직의 정교함과 모바일 UX 최적화</p>
+                </div>
+                <div class="project-tags">Puzzle Logic | UX Design | Algorithm</div>
+            </div>
+
+            <div class="project-media-section">
+                <div class="media-pair scroll-fade">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Game Board</span>
+                            [게임 보드 스크린샷 이미지]<br>
+                            (한글 타일 배치)
+                        </div>
+                        <div class="image-caption">▲ 한글 루미큐브 게임 플레이 화면</div>
+                    </div>
+                    <div class="detail-card scroll-scale">
+                        <h4>💡 기획 의도</h4>
+                        <p>루미큐브 규칙에 한글 자모음 결합 원리를 접목. 한글의 과학적 제자 원리(<strong>초성+중성+종성</strong>)를 게임 룰로 치환하여, 단어 조합을 통해
+                            한글의 우수성을 체험하고 퍼즐 해결의 카타르시스를 느끼도록 기획. 단순 단어 맞추기를 넘어 전략적 타일 관리가 필요한 두뇌 게임 지향.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.1s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Validation Algorithm</span>
+                            [검증 알고리즘 플로우차트 이미지]<br>
+                            (타일 유효성 검사)
+                        </div>
+                        <div class="image-caption">▲ 타일 검증 로직 설계</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.1s;">
+                        <h4>🎯 담당 부분</h4>
+                        <p>한글 결합 규칙을 활용한 핵심 퍼즐 아이디어 제안 및 모바일 환경 최적화 UI/UX 구체화. 좁은 화면에서의 조작 편의를 위한 <strong>'자동 정렬' 및
+                                '드래그' 인터페이스</strong> 설계. 승리 조건과 예외 상황(잘못된 결합 등)을 정의한 상세 룰북(Rule Book) 작성.</p>
+                    </div>
+                </div>
+
+                <div class="media-pair scroll-fade" style="animation-delay: 0.2s;">
+                    <div class="project-image-item scroll-scale">
+                        <div class="image-placeholder" onclick="openModal(this)">
+                            <span class="img-tag">Mobile UX</span>
+                            [모바일 UI/UX 와이어프레임 이미지]<br>
+                            (드래그, 드롭, 정렬)
+                        </div>
+                        <div class="image-caption">▲ 모바일 최적화 인터페이스 설계</div>
+                    </div>
+                    <div class="detail-card scroll-scale" style="animation-delay: 0.2s;">
+                        <h4>⚙️ 구현 알고리즘</h4>
+                        <ul>
+                            <li><strong>Unicode 오토마타:</strong> Unicode 체계 기반의 한글 오토마타 로직 알고리즘화</li>
+                            <li><strong>검증 시스템:</strong> 플레이어 제출 타일의 문법적 유효성 검사</li>
+                            <li><strong>규칙 부합도:</strong> 루미큐브 규칙(연속성, 그룹) 부합 여부 실시간 검사</li>
+                            <li><strong>판정 플로우:</strong> 타일 제출 → 유효성 검사 → 등록/반려의 상세 알고리즘</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-card scroll-scale" style="animation-delay: 0.3s;">
+                    <h4>🔧 구현 디테일</h4>
+                    <ul>
+                        <li><strong>예외 처리:</strong> 초/중/종성 결합 시 발생하는 모든 예외 케이스 분류</li>
+                        <li><strong>알고리즘 완결성:</strong> 시스템이 오류 없이 모든 경우 처리</li>
+                        <li><strong>사용자 피드백:</strong> "유효한 조합", "잘못된 타일" 등 명확한 피드백 제공</li>
+                        <li><strong>모바일 최적화:</strong> 마그네틱 드래그 및 그룹핑 기능으로 터치 미스 최소화</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <p>Copyright © 2026 Kim Dong-hyeon. All rights reserved.</p>
+        <p>본 포트폴리오는 RISE 현장실습 지원을 위해 제작되었습니다.</p>
+    </footer>
+
+    <script>
+        // ===== 스크롤 애니메이션 Intersection Observer =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = entry.target.style.animation;
+                    // 이미 애니메이션이 설정되어 있으면 트리거됨
+                }
+            });
+        }, observerOptions);
+
+        // 모든 애니메이션 클래스를 가진 요소 관찰
+        document.querySelectorAll('[class*="scroll-"]').forEach(element => {
+            observer.observe(element);
+        });
+
+        // ===== 마우스 추적 패럴렉스 효과 =====
+        document.addEventListener('mousemove', (e) => {
+            const header = document.querySelector('header');
+            if (!header) return;
+
+            const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+            const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            // 헤더에 미묘한 배경 이동 효과
+            header.style.background = `radial-gradient(circle at ${50 + xPos}% ${50 + yPos}%, rgba(59, 130, 246, 0.15), transparent)`;
+        });
+
+        // ===== 스크롤 시 특수 효과 =====
+        let scrollPos = 0;
+        window.addEventListener('scroll', () => {
+            scrollPos = window.scrollY;
+
+            // 헤더 투명도 감소 효과
+            const header = document.querySelector('header');
+            if (header) {
+                const opacity = Math.max(0, 1 - scrollPos / 300);
+                header.style.opacity = opacity < 0.3 ? 0.3 : opacity;
+            }
+
+            // 스크롤 바 애니메이션 효과
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollPos / docHeight) * 100;
+            document.documentElement.style.setProperty('--scroll-percent', scrollPercent + '%');
+        });
+
+        // ===== 부드러운 스크롤 =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // ===== 스크롤 깊이에 따른 텍스트 나타남 효과 =====
+        const textElements = document.querySelectorAll('.text-content');
+        const textObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 각 li 요소에 순차적 애니메이션
+                    const listItems = entry.target.querySelectorAll('li');
+                    listItems.forEach((li, index) => {
+                        li.style.animation = `slideInUp 0.6s ease-out ${0.1 * index}s both`;
+                        li.style.opacity = '0';
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        textElements.forEach(el => textObserver.observe(el));
+
+        // ===== 카드 호버 시 3D 틸트 효과 =====
+        const cards = document.querySelectorAll('.project-container, .skill-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const xPercent = (x / rect.width - 0.5) * 10;
+                const yPercent = (y / rect.height - 0.5) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${yPercent}deg) rotateY(${xPercent}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // ===== 목차 활성 상태 업데이트 =====
+        const tocLinks = document.querySelectorAll('.toc-items a');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveToc() {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                // 섹션이 화면 상단 1/3에 들어오면 활성화
+                if (window.scrollY >= sectionTop - window.innerHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveToc);
+        updateActiveToc(); // 초기 실행
+
+        // ===== 이미지 모달 기능 =====
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const zoomResetBtn = document.getElementById('zoomReset');
+        const zoomLevelDisplay = document.getElementById('zoomLevel');
+        const modalImageContainer = document.querySelector('.modal-image-container');
+
+        let currentZoom = 100;
+        const MIN_ZOOM = 50;
+        const MAX_ZOOM = 300;
+        const ZOOM_STEP = 10;
+
+        function updateZoomDisplay() {
+            zoomLevelDisplay.textContent = currentZoom + '%';
+            modalImage.style.transform = `scale(${currentZoom / 100})`;
+        }
+
+        function zoomImage(direction) {
+            if (direction === 'in') {
+                currentZoom = Math.min(currentZoom + ZOOM_STEP, MAX_ZOOM);
+            } else if (direction === 'out') {
+                currentZoom = Math.max(currentZoom - ZOOM_STEP, MIN_ZOOM);
+            } else if (direction === 'reset') {
+                currentZoom = 100;
+            }
+            updateZoomDisplay();
+        }
+
+        zoomInBtn.addEventListener('click', () => zoomImage('in'));
+        zoomOutBtn.addEventListener('click', () => zoomImage('out'));
+        zoomResetBtn.addEventListener('click', () => zoomImage('reset'));
+
+        // 마우스 휠로 줌
+        modalImageContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomImage('in');
+            } else {
+                zoomImage('out');
+            }
+        }, { passive: false });
+
+        function openModal(element) {
+            // 클릭한 요소의 텍스트에서 대괄호 안의 텍스트를 이미지 경로로 사용
+            const text = element.textContent;
+            const match = text.match(/\[(.*?)\]/);
+
+            if (match) {
+                const imagePath = match[1];
+                // 실제 이미지가 없을 때의 placeholder로 사용
+                // 나중에 실제 이미지 경로를 입력하면 이 부분에서 로드됨
+                modalImage.alt = imagePath;
+                modalImage.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.05) 100%)';
+                modalImage.style.display = 'flex';
+                modalImage.style.alignItems = 'center';
+                modalImage.style.justifyContent = 'center';
+                modalImage.textContent = imagePath; // 이미지 로드 실패 시 텍스트 표시
+
+                // 줌 초기화
+                currentZoom = 100;
+                updateZoomDisplay();
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            modalImage.src = '';
+            modalImage.textContent = '';
+            currentZoom = 100;
+            updateZoomDisplay();
+        }
+
+        // 모달 닫기 버튼 클릭
+        modalClose.addEventListener('click', closeModal);
+
+        // 모달 배경 클릭 시 닫기
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
